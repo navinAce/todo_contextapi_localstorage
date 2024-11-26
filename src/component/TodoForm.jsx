@@ -5,14 +5,12 @@ import { useTodo } from "../context";
 
 function TodoForm() {
     const [todo,setTodo]=useState("")
-    const [counter,setCounter]=useState(1)
     const {addTodo}=useTodo()
 
     const add=(e)=>{
         e.preventDefault()
         if(!todo) return
-        setCounter((prev)=>prev+1)
-        addTodo({id:counter,todo,completed:false})
+        addTodo({todo,completed:false})
         setTodo("")
     }
 

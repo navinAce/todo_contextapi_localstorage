@@ -7,7 +7,9 @@ function App() {
   const [todos,setTodos]=useState([])
 
   const addTodo=(todo)=>{
-    setTodos((prev)=>[{...todo},...prev]) //not necessary but good practice for react
+    const currentCounter = parseInt(localStorage.getItem("todoCounter")) || 1;
+    setTodos((prev)=>[{id:currentCounter,...todo},...prev]) //not necessary but good practice for react
+    localStorage.setItem("todoCounter", currentCounter + 1);
   }
   const updateTodo=(id,todo)=>{
     setTodos((prev)=>prev.map((eachTodo)=>(eachTodo.id===id ? todo : eachTodo)))
